@@ -22,8 +22,12 @@ g <- rasterGrob(map_image, width= unit(1,"npc"), height = unit(1,"npc") ,interpo
 
 deaths <- fread("data/sai_deaths.csv")
 
+mode_data <- read.csv(file = "data/Jesse_data.csv" )
+
+
 source('Funtions_Daniel.R')
 source('Funtions_Sai.R')
+source('Functions_Jesse.R')
 
 shinyServer(function(input, output, session) {
   
@@ -48,5 +52,12 @@ shinyServer(function(input, output, session) {
       killer_plot(deaths, input$Xcordinate,input$Ycordinate)
     }
   })
+  
+  output$mode_plot <- renderPlot({
+    placement_data(mode_data, input$view_mode)
+  })
+  
+  
+  
   
 })

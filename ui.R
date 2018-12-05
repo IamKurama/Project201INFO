@@ -85,6 +85,40 @@ shinyUI(navbarPage(
            )
     
   ),
+  tabPanel("Mode of Game and kills of top player",
+           tags$div(
+             p(""),
+             
+             sidebarLayout(
+               
+               sidebarPanel(
+                 
+                 selectInput(inputId = "view_mode",
+                             label = "Mode Change",
+                             choices = c("View Mode", "Player kills"))
+               ),
+               
+               mainPanel(
+                 
+                 plotOutput("mode_plot"),
+                 
+                 p("This analysis of kills made by players who landed on #1 rank;  it is based on the aggregation data of players from PUBG. As a sample data, it contains information of more than 100000 matches. The following bar chart will display kills made by players who landed on #1 rank in maps Erangel and Miramar PUBG.
+
+The results above show that players who landed on the top rank, rank 1, have high amounts of kills. We can conclude that new players should be actively engaged in the game and would not benefit much from remaining in one position (camping)."),
+
+
+p("for plot on view mode (first person point of view vs third person point of view)
+This analysis of view mode (first person perspective vs third person perspective;  it is based on the aggregation data of players from PUBG. As a sample data, it contains information of more than 100000 matches. The following bar chart view mode by players who landed on #1 rank in maps Erangel and Miramar.
+
+The results above show that players who landed on the top rank, rank 1, use third person perspective. We can conclude that new players should start with their view to be third person perspective.")
+               )
+              
+               
+             ),
+             p("")
+             
+           )
+  ),
   tabPanel("Weapon Popularity of PUBG",
       tags$div(
         p("This analysis of weapon popularity is based on the death data of players
