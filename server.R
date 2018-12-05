@@ -13,6 +13,9 @@ weapon_stat <- select(weapon_stat, X, Weapon, Ammo, Fire.Rate, Damage, Bullet.Sp
 victim_position <- data.table::fread("data/victim_position_Daniel.csv", header = TRUE, stringsAsFactors = FALSE)
 victim_position <- victim_position[victim_position$map == "ERANGEL"]
 
+map_image <- readJPEG("ERANGEL.jpg", native = TRUE)
+g <- rasterGrob(map_image, width= unit(1,"npc"), height = unit(1,"npc") ,interpolate=FALSE)
+
 weapon_plot <- function(map, player) {
   
   if(map == "MIRAMAR") {
@@ -73,15 +76,15 @@ plotting <- function(data, map_of_choice, player_range) {
 
 death_plot <- function(minute) {
   
-##  victim_position <- filter(victim_position, map == choice_map)
-  victim_position <- filter(victim_position, round(time) == (minute * 60))
-
+  victim_position <- victim_position[victim_position$time == (minute * 60),]
+  
   ggplot(data = victim_position) +
+    annotation_custom(g, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf) +
     geom_point(mapping = aes(x = victim_position$victim_position_x,
-                             y = victim_position$victim_position_y), size = 0.0001) +
-    labs(title = paste("Death Position"),
+                             y = victim_position$victim_position_y), size = 1, color = "red") +
+    labs(title = paste("Death Position of", choice_map),
          x = "X coordinate", y = "Y coordinate")
-  ##    annotation_custom(g, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)
+  
 }
 
 
