@@ -6,7 +6,7 @@ weapon_plot <- function(map, player) {
       
     } 
     else {
-      miramar <- miramar[killer_placement < 6]
+      miramar <- miramar[miramar$killer_placement < 6, ]
       plotting(miramar, map, player)
     }
   } 
@@ -16,7 +16,7 @@ weapon_plot <- function(map, player) {
       plotting(erangel, map, player)
     } 
     else {
-      erangel <- erangel[killer_placement < 6]
+      erangel <- erangel[erangel$killer_placement < 6, ]
       plotting(erangel, map, player)
     }
   }
@@ -40,8 +40,8 @@ plotting <- function(data, map_of_choice, player_range) {
                               labels = scales::comma) +
            geom_text(mapping = aes(x = killed_by, y = number, label = number),
                      vjust = -0.5))
+  
 }
-
 
 death_plot <- function(minute) {
   victim_position <- victim_position[round(victim_position$time) == (minute * 60),]

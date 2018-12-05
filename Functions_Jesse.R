@@ -2,7 +2,6 @@ library(dplyr)
 library(stringr)
 library(ggplot2)
 
-data <- read.csv(file = "data/Jesse_data.csv", stringsAsFactors = FALSE, nrows = 10000)
 
 # given agrregate data, 'agg_match_stats_0.csv',
 # when given 'View Mode', plots out the frequencies of the mode used
