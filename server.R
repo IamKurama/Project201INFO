@@ -1,9 +1,17 @@
 library(data.table)
 library(dplyr)
 library(ggplot2)
+library(gridExtra)
+library(grid)
 library(shiny)
 
-data <- data.table::fread("filtered_kill_match_Daniel.csv", header = TRUE, stringsAsFactors = FALSE)
+data <- data.table::fread("data/filtered_kill_match_Daniel.csv", header = TRUE, stringsAsFactors = FALSE)
+
+weapon_stat <- read.csv("data/PUBG Weapon Stats.csv", stringsAsFactors = FALSE)
+weapon_stat <- select(weapon_stat, X, Weapon, Ammo, Fire.Rate, Damage, Bullet.Speed, Reload, Range)
+
+victim_position <- data.table::fread("data/victim_position_Daniel.csv", header = TRUE, stringsAsFactors = FALSE)
+victim_position <- victim_position[victim_position$map == "ERANGEL"]
 
 weapon_plot <- function(map, player) {
   
@@ -47,22 +55,50 @@ plotting <- function(data, map_of_choice, player_range) {
   weapon_summary <- group_by(data, killed_by) %>%
     summarize(number = n())
   
-  ggplot(data = head(arrange(weapon_summary, -number), 10)) +
+  top_10_weapon <- head(arrange(weapon_summary, -number), 10)
+  weapon_stat <- weapon_stat[match(top_10_weapon$killed_by, weapon_stat$Weapon), ]
+  weapon_stat <- filter(weapon_stat, Weapon != "NA")
+  assign("top_10_weapon_data", weapon_stat, envir = globalenv())
+  
+  ggplot(data = top_10_weapon) +
     geom_col(mapping = aes(x = killed_by, y = number, fill = killed_by)) +
     labs(title = paste("Weapon Popularity of", map_of_choice, "by", player_range),
          x = "Type of Weapon", fill = "Weapon type") +
-    scale_y_continuous(name = "Number of kills (per weapon)",
+    scale_y_continuous(name = "Number of use (per weapon)",
                        labels = scales::comma) +
     geom_text(mapping = aes(x = killed_by, y = number, label = number),
               vjust = -0.5)
   
 }
 
+death_plot <- function(minute) {
+  
+##  victim_position <- filter(victim_position, map == choice_map)
+  victim_position <- filter(victim_position, round(time) == (minute * 60))
+
+  ggplot(data = victim_position) +
+    geom_point(mapping = aes(x = victim_position$victim_position_x,
+                             y = victim_position$victim_position_y), size = 0.0001) +
+    labs(title = paste("Death Position"),
+         x = "X coordinate", y = "Y coordinate")
+  ##    annotation_custom(g, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf)
+}
+
+
 shinyServer(function(input, output) {
   
   output$weapon_plot <- renderPlot({
     weapon_plot(input$map, input$player)
+    
   })
   
+  output$weapon_plot_stats <- renderPlot({
+    grid.table(top_10_weapon_data)
+    
+  })
+  
+  output$death_plot <- renderPlot({
+    death_plot(input$time_passed)
+  })
   
 })
