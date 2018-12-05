@@ -8,10 +8,15 @@ shinyUI(navbarPage(
   
   tabPanel("Home",
          tags$div(
-           p("This analysis of weapon popularity is based on the death data of players
-              from PUBG. As a sample data, it contains information of more than 100000 matches. 
-             The following bar chart will display kills made by top 10 weapons in Erangel and Miramar,
-             two maps of PUBG.")
+           p("Video games are a rich area for data extraction due to its digital nature. 
+              Notable examples such as the League of legends, World of Warcraft and even
+              Grand Theft Auto. Data scientists can gain insight on the logic and decision-making
+              that the players face when put in virtual scenarios. 
+
+              For the last two years, two games are dominating twitch and other gaming networks: 
+              Fortnite and PUBG. PlayerUnknown's Battlegrounds was the most watched battle-royale 
+              game on Twitch before Fortnite exploded in popularity, and it's widely considered 
+              the more mature alternative.")
          )
   ),      
   

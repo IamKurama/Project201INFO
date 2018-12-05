@@ -7,7 +7,10 @@ deaths <- fread("kill_match_stats_final_0.csv")
 deaths <- select(deaths, killer_position_x, killer_position_y,victim_position_x, victim_position_y ,map)
 deaths <- deaths[map == "ERANGEL"]
 deaths <- deaths[1:1000000]
-#the position is in centimeters
+
+
+
+agg#the position is in centimeters
 find_circle_killers <- function(position.x , position.y){
   #create a circle around the position for getting a clear picture about where the person is 
   #assume a radius of 10 meters 
