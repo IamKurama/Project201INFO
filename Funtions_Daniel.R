@@ -40,7 +40,6 @@ plotting <- function(data, map_of_choice, player_range) {
                               labels = scales::comma) +
            geom_text(mapping = aes(x = killed_by, y = number, label = number),
                      vjust = -0.5))
-  
 }
 
 
@@ -50,6 +49,8 @@ death_plot <- function(minute) {
     annotation_custom(g, xmin=-Inf, xmax=Inf, ymin=-Inf, ymax=Inf) +
     geom_point(mapping = aes(x = victim_position$victim_position_x,
                              y = victim_position$victim_position_y), size = 1, color = "red") +
-    labs(title = paste("Death Position"), x = "X coordinate", y = "Y coordinate")
+    scale_x_continuous(name = "X Coordinate", labels = scales::comma, limits = c(0, 800000)) +
+    scale_y_continuous(name = "Y Coordinate", labels = scales::comma, limits = c(0, 800000)) +
+    labs(title = "Death of Players on Erangel" )
   
 }
