@@ -76,8 +76,9 @@ shinyUI(navbarPage(
              h2("Jesse Flores"),
              p("Hometown : Mount Vernon, WA"),
              p("Double Major: Geography ,  Earth and Space Sciences"),
-             p("Jesse, sophomore pre info student, from Mt Vernon.
-               Feel free to Ask Jesse about global health disparities and Fortnite."),
+             p("Jesse, sophomore from Mt Vernon. Feel free to Ask Jesse about global health and health
+                disparities. Hobbies include drawing nature and his current goals are to travel, and make
+                a positive impact on low income, low resource communities."),
              h2("Yueh"),
              p("Hometown : Taiwan"),
              p("Major: Info"),
