@@ -69,7 +69,7 @@ shinyUI(navbarPage(
                 algae to solve the worlds problems or become really hyped about the financial services industry.
                On his time away from school work, he is either reading news or grabbing matcha ice cream.."),
              h2("Daniel Zhang"),
-             p("Hometown : Shenzen, China"),
+             p("Hometown : Shenzhen, China"),
              p("Intended Major: Info"),
              p("Daniel, sophomore pre info student, from Shenzhen. He is interested in anime and history of Europe
                (especially in myth and legends). His current goal is to discover something he can devote to"),
