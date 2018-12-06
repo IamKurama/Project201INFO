@@ -16,7 +16,7 @@ weapon_stat <- select(weapon_stat, X, Weapon, Ammo, Fire.Rate, Damage, Bullet.Sp
 victim_position <- data.table::fread("data/victim_position_Daniel.csv", header = TRUE, stringsAsFactors = FALSE)
 victim_position$time <- round(victim_position$time)
 
-map_image <- readJPEG("ERANGEL.jpg", native = TRUE)
+map_image <- readJPEG("erangel.jpg", native = TRUE)
 g <- rasterGrob(map_image, width= unit(1,"npc"), height = unit(1,"npc") ,interpolate=FALSE)
 
 

@@ -79,7 +79,7 @@ shinyUI(navbarPage(
              p("Jesse, interested in topics like global health and health
                 disparities. Hobbies include drawing nature and his current goals are to travel, and make
                 a positive impact on low income, low resource communities."),
-             h2("Yueh"),
+             h2("YuehChi Lin"),
              p("Hometown : Taiwan"),
              p("Major: Info"),
              p("")
