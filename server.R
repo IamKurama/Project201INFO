@@ -5,7 +5,7 @@ library(gridExtra)
 library(grid)
 library(jpeg)
 library(shiny)
-
+library(rsconnect)
 
 #process and gather the data
 data <- data.table::fread("data/filtered_kill_match_Daniel.csv", header = TRUE, stringsAsFactors = FALSE)

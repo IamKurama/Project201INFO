@@ -71,8 +71,8 @@ shinyUI(navbarPage(
              h2("Daniel Zhang"),
              p("Hometown : Shenzen, China"),
              p("Intended Major: Info"),
-             p("Daniel, sophomore pre info student, from Shenzen. He is intrested in anime and history of Europe
-               (especially in myth and legends). His current goals is to discover something he can devote to"),
+             p("Daniel, sophomore pre info student, from Shenzhen. He is interested in anime and history of Europe
+               (especially in myth and legends). His current goal is to discover something he can devote to"),
              h2("Jesse Flores"),
              p("Hometown : Mount Vernon, WA"),
              p("Double Major: Geography ,  Earth and Space Sciences"),
@@ -160,8 +160,10 @@ shinyUI(navbarPage(
        ),
        p("Based on the result of chart, we can see that in both maps the most popular weapon is
           always M416, a balanced and flexible assault rifle that works well for medium-range 
-          shooting. After M416, the top 5 weapons are always occupied by SCAR-L, AKM, and M16A4,
-          which shows that assault rifle is really popular among players of PUBG."),
+         shooting. After M416, the top 5 weapons are always occupied by SCAR-L, AKM, and M16A4,
+         which shows that assault rifle is really popular among players of PUBG. As the result,
+         it is highly recommended for new or old players to pick assault rifle as their
+         weapon."),
   
        verticalLayout(
     
@@ -172,9 +174,10 @@ shinyUI(navbarPage(
          ),
   
          p("The above table is a summary of data about those top 10 weapons. It's provided by
-           PUBG's official website. All columns related to time and distance use second and meter 
-           as their unit. For example, Fire.Rate column means the amount of bullet a weapon can 
-           fire per second. Also, the damage is based on hp of player which is 100 in this game.")
+                 PUBG's official website. All columns related to time and distance use second and meter 
+                 as their unit. For example, Fire.Rate column means the amount of bullet a weapon can 
+                 fire per second. Also, the damage is based on hp of player which is 100 in this game.
+                 A part of weapon's data is not provided by PUBG, so that they are included in the table.")
   
         )
       )
